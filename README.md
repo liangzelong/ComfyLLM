@@ -10,10 +10,16 @@ Use LLM to Generate LLM Scripts inncluding Training, Inference, Evaluation and D
 
 ComfyLLM is on your service!~
 
-### [Installing ComfyUI](#installing)
+### [Installing ComfyLLM](#installing)
 
 ## Features
+- Nodes for LLM Model Training, Inference, Evaluation and Deployment.
+- Fine-tuning with  RAG & LoRA.
+- Inference with API & Gradio.
 
 
 # Notes
-
+- [ ] LLM Nodes for Module Selection.
+- [ ] LLM Nodes for Training, Inference, Evaluation and Deployment.
+- [ ] LLM Script Flow Generation.
+- [ ] LLM Script Execution.
