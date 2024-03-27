@@ -1,0 +1,6 @@
+[submodule "InternLM"]
+	path = InternLM
+	url = https://github.com/InternLM/InternLM
+[submodule "ComfyUI"]
+	path = ComfyUI
+	url = https://github.com/comfyanonymous/ComfyUI.git
