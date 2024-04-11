@@ -1,0 +1,484 @@
+{
+  "last_node_id": 31,
+  "last_link_id": 34,
+  "nodes": [
+    {
+      "id": 27,
+      "type": "sd_sd",
+      "pos": [
+        1031,
+        319
+      ],
+      "size": {
+        "0": 229.20001220703125,
+        "1": 106
+      },
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "prompt",
+          "type": "META",
+          "link": 33,
+          "label": "prompt"
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 29,
+          "label": "vae"
+        },
+        {
+          "name": "unet",
+          "type": "MODEL",
+          "link": 30,
+          "label": "unet"
+        },
+        {
+          "name": "text_encoder",
+          "type": "CLIP",
+          "link": 31,
+          "label": "text_encoder"
+        },
+        {
+          "name": "cfg",
+          "type": "Config",
+          "link": 32,
+          "label": "cfg"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            34
+          ],
+          "shape": 3,
+          "label": "IMAGE",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "sd_sd"
+      }
+    },
+    {
+      "id": 29,
+      "type": "sd_uent",
+      "pos": [
+        555,
+        315
+      ],
+      "size": {
+        "0": 210,
+        "1": 26
+      },
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "cfg",
+          "type": "Config",
+          "link": 27,
+          "label": "cfg"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            30
+          ],
+          "shape": 3,
+          "label": "MODEL",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "sd_uent"
+      }
+    },
+    {
+      "id": 30,
+      "type": "sd_encoder",
+      "pos": [
+        556,
+        454
+      ],
+      "size": {
+        "0": 210,
+        "1": 26
+      },
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "cfg",
+          "type": "Config",
+          "link": 26,
+          "label": "cfg"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            31
+          ],
+          "shape": 3,
+          "label": "CLIP",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "sd_encoder"
+      }
+    },
+    {
+      "id": 28,
+      "type": "sd_vae",
+      "pos": [
+        569,
+        250
+      ],
+      "size": {
+        "0": 210,
+        "1": 26
+      },
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "cfg",
+          "type": "Config",
+          "link": 28,
+          "label": "cfg"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            29
+          ],
+          "shape": 3,
+          "label": "VAE",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "sd_vae"
+      }
+    },
+    {
+      "id": 21,
+      "type": "sd_encoder_cfg",
+      "pos": [
+        -193,
+        532
+      ],
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "Config",
+          "type": "Config",
+          "links": [
+            26
+          ],
+          "shape": 3,
+          "label": "Config",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "sd_encoder_cfg"
+      },
+      "widgets_values": [
+        "ClipWrapper",
+        "huggingface",
+        "text_encoder",
+        "/home/lzl/temp/sd1_5/"
+      ]
+    },
+    {
+      "id": 22,
+      "type": "sd_sd_cfg",
+      "pos": [
+        466,
+        615
+      ],
+      "size": {
+        "0": 315,
+        "1": 82
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "Config",
+          "type": "Config",
+          "links": [
+            32
+          ],
+          "shape": 3,
+          "label": "Config",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "sd_sd_cfg"
+      },
+      "widgets_values": [
+        "/home/lzl/temp/sd1_5/",
+        true
+      ]
+    },
+    {
+      "id": 7,
+      "type": "PreviewImage",
+      "pos": [
+        1311,
+        321
+      ],
+      "size": {
+        "0": 210,
+        "1": 246
+      },
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 34,
+          "label": "images"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 16,
+      "type": "sd_vae_cfg",
+      "pos": [
+        -229,
+        39
+      ],
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "Config",
+          "type": "Config",
+          "links": [
+            28
+          ],
+          "shape": 3,
+          "label": "Config",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "sd_vae_cfg"
+      },
+      "widgets_values": [
+        "AutoencoderKL",
+        "vae",
+        "/home/lzl/temp/sd1_5/"
+      ]
+    },
+    {
+      "id": 20,
+      "type": "sd_uent_cfg",
+      "pos": [
+        -196,
+        286
+      ],
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "Config",
+          "type": "Config",
+          "links": [
+            27
+          ],
+          "shape": 3,
+          "label": "Config",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "sd_uent_cfg"
+      },
+      "widgets_values": [
+        "UNet2DConditionModel",
+        "unet",
+        "/home/lzl/temp/sd1_5/"
+      ]
+    },
+    {
+      "id": 31,
+      "type": "sd_sd_meta",
+      "pos": [
+        420,
+        -58
+      ],
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "META",
+          "type": "META",
+          "links": [
+            33
+          ],
+          "shape": 3,
+          "label": "META",
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "sd_sd_meta"
+      },
+      "widgets_values": [
+        "a tree"
+      ]
+    }
+  ],
+  "links": [
+    [
+      26,
+      21,
+      0,
+      30,
+      0,
+      "Config"
+    ],
+    [
+      27,
+      20,
+      0,
+      29,
+      0,
+      "Config"
+    ],
+    [
+      28,
+      16,
+      0,
+      28,
+      0,
+      "Config"
+    ],
+    [
+      29,
+      28,
+      0,
+      27,
+      1,
+      "VAE"
+    ],
+    [
+      30,
+      29,
+      0,
+      27,
+      2,
+      "MODEL"
+    ],
+    [
+      31,
+      30,
+      0,
+      27,
+      3,
+      "CLIP"
+    ],
+    [
+      32,
+      22,
+      0,
+      27,
+      4,
+      "Config"
+    ],
+    [
+      33,
+      31,
+      0,
+      27,
+      0,
+      "META"
+    ],
+    [
+      34,
+      27,
+      0,
+      7,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [
+    {
+      "title": "Group",
+      "bounding": [
+        286,
+        1001,
+        1027,
+        404
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "locked": false
+    },
+    {
+      "title": "Group",
+      "bounding": [
+        -32,
+        1004,
+        1851,
+        338
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "locked": false
+    }
+  ],
+  "config": {},
+  "extra": {},
+  "version": 0.4
+}
