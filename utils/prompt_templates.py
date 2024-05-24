@@ -51,7 +51,7 @@ class Text2Token():
         "Meta-Llama-3-8B-Instruct":{
             "user":"user",
             "robot":"system"
-        }
+        },
     }
     def __init__(self,model_name,tokenizer):
         self.model_name=model_name

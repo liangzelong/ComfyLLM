@@ -1,10 +1,16 @@
 import os
 import time
+
+import json
 import torch
-from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
+from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig,pipeline
 from ..utils.prompt_templates import Text2Token
 
-model_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "models")
+root_dir=os.path.dirname(os.path.dirname(__file__))
+print(os.path.join(root_dir,'support_models.json'))
+with open(os.path.join(root_dir,'support_models.json'),"r") as f:
+    model_maps=json.load(f)["model_maps"]
+model_list=list(model_maps.keys())
 
 
 def load_model(model_name):
@@ -18,14 +24,14 @@ def load_model(model_name):
         bnb_4bit_quant_type="nf4",
     )
     model = AutoModelForCausalLM.from_pretrained(
-        os.path.join(model_dir, model_name),
+        os.path.join(root_dir, model_maps[model_name]),
         device_map="auto",
         torch_dtype=torch.float16,
         trust_remote_code=True,
         quantization_config=nf4_config,
     )
     tokenizer = AutoTokenizer.from_pretrained(
-        os.path.join(model_dir, model_name), trust_remote_code=True
+        os.path.join(root_dir, model_maps[model_name]), trust_remote_code=True
     )
     return tokenizer, model
 
@@ -34,13 +40,13 @@ class LLM_loader:
     def __init__(self):
         self.model = None
         self.tokenizer = None
-        self.model_list = os.listdir(model_dir)
+        self.last_model=None
 
     @classmethod
     def INPUT_TYPES(s):
         return {
             "required": {
-                "model_name": (s().model_list,),
+                "model_name": (model_list,),
                 "dialog": (
                     "STRING",
                     {
@@ -80,10 +86,6 @@ class LLM_loader:
                         "display": "number",
                     },
                 ),
-                "reload_weights": (
-                    "BOOLEAN",
-                    {"default": False},
-                ),
             },
         }
 
@@ -97,17 +99,24 @@ class LLM_loader:
     CATEGORY = "ComfyLLM"
 
     def chat(
-        self, model_name, dialog, max_new_tokens, temperature, top_p, reload_weights
+        self, model_name, dialog, max_new_tokens, temperature, top_p
     ):
-        if (self.model == None and self.tokenizer == None) or reload_weights:
-
-            del self.model
-            del self.tokenizer
-            self.tokenizer, self.model = load_model(model_name)
-        token_processer = Text2Token(
-            model_name=model_name,
-            tokenizer=self.tokenizer,
-        )
+        if self.last_model!=model_name:
+            if self.last_model is not None:
+                self.model.to('CPU')
+                self.tokenizer.to('CPU')
+                del self.model
+                del self.tokenizer
+            else:
+                self.tokenizer, self.model = load_model(model_name)
+                token_processer = Text2Token(
+                        model_name=model_name,
+                        tokenizer=self.tokenizer,
+                    )
+        
+        
+        
+        
         messages = token_processer.dialog2message(dialog)
         if len(messages) < 1:
             return ("No message",)

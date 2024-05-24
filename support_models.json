@@ -1,0 +1,12 @@
+{
+    "model_maps": {
+        "Meta-Llama-3-8B-Instruct": "models/Meta-Llama-3-8B-Instruct",
+        "internlm2-chat-1_8b": "models/internlm2-chat-1_8b"
+    },
+    "embedding_maps": [
+        "bce-embedding-base_v1"
+    ],
+    "reranker_maps": [
+        "bce-reranker-base_v1"
+    ]
+}
