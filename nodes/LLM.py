@@ -84,6 +84,7 @@ class LLM_loader:
                     "BOOLEAN",
                     {"default": False},
                 ),
+                "is_stream":("BOOLEAN",{"default": False},)
             },
         }
 
@@ -97,7 +98,7 @@ class LLM_loader:
     CATEGORY = "ComfyLLM"
 
     def chat(
-        self, model_name, dialog, max_new_tokens, temperature, top_p, reload_weights
+        self, model_name, dialog, max_new_tokens, temperature, top_p, reload_weights,is_stream
     ):
         if (self.model == None and self.tokenizer == None) or reload_weights:
 
