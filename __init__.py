@@ -1,9 +1,9 @@
-from .nodes import LLM,RAG_node
+from .nodes import LLM,RAG_node,Gradio_chat_node
 
 NODE_CLASS_MAPPINGS = {}
 NODE_DISPLAY_NAME_MAPPINGS = {}
 
-for module in (LLM,RAG_node):
+for module in (LLM,RAG_node,Gradio_chat_node):
     NODE_CLASS_MAPPINGS.update(module.NODE_CLASS_MAPPINGS)
     NODE_DISPLAY_NAME_MAPPINGS.update(module.NODE_DISPLAY_NAME_MAPPINGS)
 

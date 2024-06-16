@@ -222,7 +222,7 @@ class LLM_loader:
 
     # OUTPUT_NODE = False
 
-    CATEGORY = "ComfyLLM"
+    CATEGORY = "ComfyLLM/LLM"
 
     def chat(self, model_name, dialog, max_new_tokens, temperature, top_p,quantize,is_stream):
         if self.last_model != model_name:
