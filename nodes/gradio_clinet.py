@@ -1,16 +1,23 @@
 import json
-import gradio as gr
+import os
+proxystr=os.environ.get('HTTP_PROXY', None)
+print(f'------env proxy:{proxystr}')
+
+new_env = os.environ.copy()
+
+# 移除代理配置
+new_env.pop('HTTP_PROXY', None)
+new_env.pop('HTTPS_PROXY', None)
 import urllib
 import requests
 import websocket
 import uuid
-import os
 import copy
 import time
 
 from PIL import Image
 import numpy as np
-
+import gradio as gr
 
 root_dir = os.environ.get("ComLLM_Path")
 
@@ -78,7 +85,10 @@ def get_history():
 
         
 
-def predict(self, message, message_history):
+def predict(message, message_history):
+    print('*'*10)
+    print(message, 'KKK',message_history)
+    print('-'*10)
     len_history=len(get_history())
     client_id = str(uuid.uuid4())
     ws = websocket.WebSocket()
@@ -100,11 +110,12 @@ def predict(self, message, message_history):
                 # if data["prompt_id"] == resp.json()["prompt_id"]:
                 #     if data["node"] is None:
                 #         break
-                    
-    message = message + json.dumps(input_nodes)
+    
+    print(message , json.dumps(input_nodes))
+    message = "ComfyLLM不同于传统笔记或文档工具的特点是，它不仅记录事件和开发细节，还详细记录了设计思想和决策过程，提供了一个更为全面和深入的视角，帮助用户理解和传承知识，从而在原有基础上进行更深层次的创新和发展。"
     for i in range(len(message)):
         # time.sleep(0.05)
-        yield "You typed: " + message[: i + 1]
+        yield  message[: i + 1]
     return ["hello", "123"]
 
 

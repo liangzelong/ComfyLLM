@@ -4,6 +4,7 @@ import requests
 import os
 import copy
 
+
 import subprocess
 
 from multiprocessing import Process
@@ -77,13 +78,7 @@ class Gradio_chat:
     def INPUT_TYPES(s):
         return {
             "required": {
-                "text": (
-                    "STRING",
-                    {
-                        "multiline": True,
-                        "default": "user:Hello!",
-                    },
-                ),
+                "text": ("STRING", {"forceInput": True}),
             },
         }
 

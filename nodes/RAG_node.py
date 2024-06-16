@@ -144,53 +144,14 @@ class RAG_loader:
         return (f"Success",)
 
 
-class DumpImage:
-    def __init__(self):
-        self.type = "output"
-        self.prefix_append = ""
-        self.compress_level = 4
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {
-            "required": {
-                "images": ("IMAGE",),
-                "filename_prefix": ("STRING", {"default": "ComfyUI"}),
-            },
-            "hidden": {"prompt": "PROMPT", "extra_pnginfo": "EXTRA_PNGINFO"},
-        }
-
-    RETURN_TYPES = ()
-    FUNCTION = "save_images"
-
-    OUTPUT_NODE = True
-
-    CATEGORY = "image"
-
-    def save_images(
-        self, images, filename_prefix="ComfyUI", prompt=None, extra_pnginfo=None
-    ):
-        filename_prefix += self.prefix_append
-        for batch_number, image in enumerate(images):
-            i = 255.0 * image.cpu().numpy()
-            img = Image.fromarray(np.clip(i, 0, 255).astype(np.uint8))
-            buffer = io.BytesIO()
-            img.save(buffer, format="PNG")
-            img_binary = buffer.getvalue()
-            img_base64 = base64.b64encode(img_binary)
-
-        return {"ui": {"images": img_base64}}
-
 
 NODE_CLASS_MAPPINGS = {
     "Chroma_upadate": RAG_loader,
     "RAG": RAG_loader,
-    "DumpImage": DumpImage,
 }
 
 
 NODE_DISPLAY_NAME_MAPPINGS = {
     "Chroma_upadate": "Chroma_upadate",
     "RAG": "RAG",
-    "DumpImage": "DumpImage",
 }

@@ -1,25 +1,44 @@
 
-<div align="center">
-    <b><font size="6">ComfyLLM</font></b>
 
-English | [简体中文](README_zh-CN.md)
-
-</div>
-=======
-Use LLM to Generate LLM Scripts inncluding Training, Inference, Evaluation and Deployment. 
-
-ComfyLLM is on your service!~
-
-### [Installing ComfyLLM](#installing)
-
-## Features
-- Nodes for LLM Model Training, Inference, Evaluation and Deployment.
-- Fine-tuning with  RAG & LoRA.
-- Inference with API & Gradio.
+English | 简体中文
 
 
-# Notes
-- [ ] LLM Nodes for Module Selection.
-- [ ] LLM Nodes for Training, Inference, Evaluation and Deployment.
-- [ ] LLM Script Flow Generation.
-- [ ] LLM Script Execution.
+
+## 简介
+![ComfyLLM架构图](assets/ComfyLLM.png)
+**ComfyLLM 是基于个人笔记（Obsidian）的可视化(ComfyUI)大模型应用框架（OpenXLab）**，以低代码、易部署以及互利共建为核心，包含大模型管理、RAG、LoRA、Agent的使用以及笔记数据分析等工具，目的是用自己的数据训练自己的大模型为自己所用。目前大模型大多是企业大模型，以公开或者企业私有数据为核心进行训练，目的是为企业和员工降本增效。人工智能研究表面当数据达到一定规模后，越是专业的模型对问题的解决能力越强，每个人都是自己的专业。**个人大模型的初衷就是通过对自己已有的数字化笔记以及知识体系进行智能化数据分析以及人工智能大模型学习**，使得个人成长以及个人能力获取从数字化走向智能化。学真正有用的知识，做有益于时代的人。
+
+框架包含三个部分：
+1. 笔记数据库：Obsiaian
+2. 人工智能分析后台：ComfyUI
+3. 可视化前端：Gradio
+
+### 1.笔记数据库Obsidian
+![笔记数据库Obsidian](assets/obsidian.png)
+笔记是最早的数据库，成册的笔记进化为了书籍，记录了人类文明的变迁。以Obsidian 笔记构建数据库，根据自己的约定进行信息结构建设，由于Obsidian 笔记为markdown格式，可以自由定制自己的笔记结构，以方便后续的检索。同时按早自己的约定进行数据拆分与组合可以让人工智能更加具有个人独特性。
+
+Obsidian 内置有Api 接口，可以在侧边栏与笔记进行RAG对话交互。也可以用ComfyUI 后端进行更复杂的笔记分析，最终显示在Gradio前端界面。
+
+
+### 2.人工智能分析后台ComfyUI
+![人工智能分析后台ComfyU](assets/comfyui.png)
+ComfyUI 是人工智能的后台，运用数据分析手段来搜集知识体系漏洞以及进行知识体系拓展。实践是真理的源泉，通过开源的工具分析自己的经验以及笔记，最终目标是寻找真正用得上的知识。我们生活在一个信息爆炸的时代，构建工具、使用工具并最终超越工具达到人的全面发展是我们的目标。
+后端训练模型基于
+
+
+### 3.可视化前端Gradio
+![可视化前端Gradio](assets/gradio.png)
+工具是为了让我们更好的生活，验证成功的工作流可以通过框选直接自动生成对应的前端界面。基于ComfyUI生态不止有文字的输出还有图片、音频、视频等。通过前后端联动，可以直接在Windows云平台构建自己的博客、自己的问答助手等，进一步上升到Agent形成自己独特工作流程辅助自己的日常工作，以我为主服务社会，最终提达到升个人能力与品牌竞争力的目的。
+
+
+## 支持功能
+
+- Obsidian交互连接
+- 框选生成Gradio后端
+- RAG
+
+
+## TODO
+- [ ] 向量数据库分析工具
+- [ ] Agent
+- [ ] LVM
